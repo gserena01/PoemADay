@@ -44,20 +44,23 @@ document.getElementById("searchPoems").addEventListener("click", findPoem);
 //function for searching for poems
 function findPoem() {
     var inputPoet = document.getElementById("authorIP").value;
-    console.log(inputPoet);
     var inputTitle = document.getElementById("titleIP").value;
-    console.log(inputTitle);
     if (inputPoet === "" && inputTitle === ""){
         //cannot display a poem without inputs
-        document.getElementById("searchMessage").innerHTML = "Please input a poet or title before searching."
+        document.getElementById("searchMessage").innerHTML = "Please input a poet or title before searching.";
     } else if (inputPoet === "") {
         //display a poem based on the title, if possible
         var link = "https://poetrydb.org/title/" + inputTitle;
         fetch(link).then(r => r.text()).then(result => {
-            //Convert result to JSON object array
+            //Convert result to JSON object array to check for errors
+            var poems = '{ "poems" : ['+ result + ']}';
+            var poem = JSON.parse(poems);
+            //check to see if result has an error
+            if (poem.poems.length < 3){
+                document.getElementById("searchMessage").innerHTML = "Please try again.";
+            }
             var poems = '{ "poems" : '+ result + '}';
             var poem = JSON.parse(poems);
-            console.log(poem);
             //find title, lines, and name
             var title = poem.poems[0].title.toString();
             var name = poem.poems[0].author.toString();
@@ -86,7 +89,8 @@ function findPoem() {
             function getLink() {
             document.getElementById("authorLink").href = link;
             }
-            getLink();
+            getLink(); 
+            document.getElementById("searchMessage").innerHTML = "";
         },
         error => {
            var poem = "Could not find a poem."
