@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <h1 id = "date"> </h1>
+      <h2 id = "title"></h2>
+      <a id = "authorLink" href = "https://www.poemist.com/" target = "_blank"><h3 id = "author"></h3></a>
+      <h4 id = "lines"></h4>
+    <style>
+      body {
+        color:blueviolet;
+        background-color :rgb(77, 77, 77)
+      }
+      #searchMessage {
+        color: rgb(255, 0, 0);
+      }
+    </style>
+  </head>
+  <body>
+      <img src = "https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_272x92dp.png", width = "100", alt = "picture">    
+    <h4>
+      Find a poem: <br>
+      <label>Author: </label>
+      <input type = "text", id = "authorIP", placeholder = "Author's Name">
+      <br>
+      <label>Title: </label>
+      <input type = "text", id = "titleIP", placeholder = "Poem Title">
+      <br>
+      <button id = "searchPoems">Search</button>
+    </h4>
+    <p id = "searchMessage"></p>
+  </body> 
+  <script src = "time.js"></script>
+  <script src = "getPoem.js"></script>
+  
+</html>
