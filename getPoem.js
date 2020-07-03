@@ -28,6 +28,13 @@ fetch('https://poetrydb.org/random').then(r => r.text()).then(result => {
     lines = lines.replace(/<br>-/g, "-");
     lines = lines.replace(/<br>' /g, "'");
     lines = lines.replace(/<br>'<br>/g, "'<br>");
+    lines = lines.replace(/<br>' /g, '"');
+    lines = lines.replace(/<br>"<br>/g, '"<br>');
+    lines = lines.replace(/1<br>,Note/g, "<br> 1, Note");
+    lines = lines.replace(/_./g, ".");
+    lines = lines.replace(/_,/g, ",");
+    lines = lines.replace(/ _/g, " ");
+    lines = lines.replace(/_/g, " ");
     //display poem's title, author, and lines
     document.getElementById("title").innerHTML = title;
     document.getElementById("author").innerHTML = name;
@@ -126,6 +133,7 @@ function findPoem() {
             lines = lines.replace(/<br>-/g, "-");
             lines = lines.replace(/<br>' /g, "'");
             lines = lines.replace(/<br>'<br>/g, "'<br>");
+            lines = lines.replace(/1<br>,Note/g, "<br> 1, Note");
             //display poem's title, author, and lines
             document.getElementById("title").innerHTML = title;
             document.getElementById("author").innerHTML = name;
@@ -146,6 +154,7 @@ function findPoem() {
         });  
     } else {
         //use both to display specific poem, if possible
+        //TODO
     }
 }
 
