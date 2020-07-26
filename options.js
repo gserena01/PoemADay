@@ -1,21 +1,41 @@
-// Copyright 2018 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+//set onClick listener for author checkbox to be below function
+document.getElementById("myCheck").addEventListener("click", displayAuthors);
+let authorList = [];
+let authorSelect = document.getElementById("authorSpinner");
+let options = "<option>Choose an author</option>";
 
-'use strict';
+//Populate List of Author Names
+fetch('https://poetrydb.org/author').then(r => r.text()).then(result => {
+  // Result now contains the response text, do what you want...
+  //Convert result to JSON object array
+  var authors = JSON.parse(result);
+  for (var i in authors.authors) {
+    authorList.push(authors.authors[i]);
+  }
+  //Now Put these names into the spinner
+  for (var i = 0; i < authorList.length; i++) {
+    var opt = authorList[i];
+    console.log(opt);
+    options += "<option>" + opt + "</option>";
+  }
+  authorSelect.innerHTML = options;
+},
+  error => {
+    authorList = ["Unable to load authors."]
+    options += "<option>" + authorList[0] + "</option>";
+    authorSelect.innerHTML = options;
+  });
 
-let page = document.getElementById('buttonDiv');
-const kButtonColors = ['#3aa757', '#e8453c', '#f9bb2d', '#4688f1'];
-function constructOptions(kButtonColors) {
-  for (let item of kButtonColors) {
-    let button = document.createElement('button');
-    button.style.backgroundColor = item;
-    button.addEventListener('click', function() {
-      chrome.storage.sync.set({color: item}, function() {
-        console.log('color is ' + item);
-      })
-    });
-    page.appendChild(button);
+//Function to display Author Spinner
+function displayAuthors() {
+  var checkBox = document.getElementById("myCheck");
+  var text = document.getElementById("authorSpinner");
+  if (checkBox.checked == true) {
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
   }
 }
-constructOptions(kButtonColors);
+
+
+

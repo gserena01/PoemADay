@@ -1,94 +1,132 @@
 <!DOCTYPE html>
 <html>
-  <style>
-      
-    body {
-      color:rgb(0, 0, 0);
-      background-color :rgb(255, 255, 255);
-      font-family: 'Hoefler Text','Times New Roman', "Georgia", "Helvetica", serif;
-      line-height: 2em;
-      font-size: 19px;
-    }
+<style>
 
-    #logo {
-      margin: auto;
-      float: left;
-    }
+  /*Scrollbar settings/*
+  /* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
 
-    #lines {
-      font-weight: 100;
-      overflow-x: auto;
-    }
-    #searchMessage {
-      color: rgb(255, 0, 0);
-    }
-    #title {
-      font-family: 'Gill Sans MT', 'Gill Sans', 'Calibri', sans-serif;
-    }
-    #date {
-      text-align: left;
-      font-family: 'Gill Sans MT', 'Gill Sans', 'Calibri', sans-serif;
-    }
-    #author {
-      font-family: 'canada-type-gibson', 'Gill Sans MT', 'Gill Sans', 'Calibri', sans-serif;
-      font-weight: 100;
-    }
-    #poemContent {
-      width:fit-content;
-      overflow: visible;
-      margin-left: 7vw;
-      margin-top: 10px;
-    }
-    #searchContent {
-      position: absolute;
-      top: 1px;
-      right: 1vw;
-      font-family: 'Gill Sans MT', 'Gill Sans', 'Calibri', sans-serif;
-    }
-    .searchLabel {
-      font-size: 16px;
-    }
-    h1 {
-      margin-block-end: 20px;
-      margin-block-start: 0px;
-    }
-    h2{
-      margin-block-end: 0px;
-      margin-block-start: 0px;
-    }
-    h3 {
-      margin-block-end: 0px;
-      margin-block-start: 0px;
-    }
-    p {
-      margin-block-end: 0px;
-      margin-block-start: 0px;
-    }
-  </style>
-  <head>
-    <img id = logo src = "https://www.thenation.com/wp-content/uploads/2017/10/newPoemLogo_img.jpg", width = "100", alt = "picture">
-      <h1 id = "date"> </h1>
-      <div id = poemContent><h2 id = "title"></h2>
-      <a id = "authorLink" href = "https://www.poemist.com/" target = "_blank"><h3 id = "author"></h3></a>
-      <h4 id = "lines"></h4> </div>
-    
-  </head>
-  <body> 
-    <div id = searchContent>
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 10px;
+  box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+}
+
+  body {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    font-family: 'Hoefler Text', 'Times New Roman', "Georgia", "Helvetica", serif;
+    line-height: 2em;
+    font-size: 19px;
+  }
+
+  #logo {
+    margin: auto;
+    float: left;
+  }
+
+  #lines {
+    font-weight: 100;
+    overflow-x: auto;
+  }
+
+  #searchMessage {
+    color: rgb(255, 0, 0);
+  }
+
+  #title {
+    font-family: 'Gill Sans MT', 'Gill Sans', 'Calibri', sans-serif;
+  }
+
+  #date {
+    text-align: left;
+    font-family: 'Gill Sans MT', 'Gill Sans', 'Calibri', sans-serif;
+  }
+
+  #author {
+    font-family: 'canada-type-gibson', 'Gill Sans MT', 'Gill Sans', 'Calibri', sans-serif;
+    font-weight: 100;
+  }
+
+  #poemContent {
+    width: fit-content;
+    overflow: visible;
+    margin-left: 7vw;
+    margin-top: 10px;
+  }
+
+  #searchContent {
+    position: absolute;
+    top: 1px;
+    right: 1vw;
+    font-family: 'Gill Sans MT', 'Gill Sans', 'Calibri', sans-serif;
+  }
+
+  .searchLabel {
+    font-size: 16px;
+  }
+
+  h1 {
+    margin-block-end: 20px;
+    margin-block-start: 0px;
+  }
+
+  h2 {
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+    width: 30vw;
+  }
+
+  h3 {
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+  }
+
+  p {
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+  }
+</style>
+
+<head>
+  <img id=logo src="https://www.thenation.com/wp-content/uploads/2017/10/newPoemLogo_img.jpg" , width="100" ,
+    alt="picture">
+  <h1 id="date"> </h1>
+  <div id=poemContent>
+    <h2 id="title"></h2>
+    <a id="authorLink" href="https://www.poemist.com/" target="_blank">
+      <h3 id="author"></h3>
+    </a>
+    <h4 id="lines"></h4>
+  </div>
+
+</head>
+
+<body>
+  <div id=searchContent>
     <p>
       Find a poem: <br>
-      <label class = searchLabel>Author: </label>
-      <input type = "text", id = "authorIP", placeholder = "Author's Name">
+      <label class=searchLabel>Author: </label>
+      <input type="text" , id="authorIP" , placeholder="Author's Name">
       <br>
-      <label class = searchLabel>Title: </label>
-      <input type = "text", id = "titleIP", placeholder = "Poem Title">
+      <label class=searchLabel>Title: </label>
+      <input type="text" , id="titleIP" , placeholder="Poem Title">
       <br>
-      <button id = "searchPoems">Search</button>
+      <button id="searchPoems">Search</button>
     </p>
-    <p id = "searchMessage"></p>
-  </div>   
-  </body> 
-  <script src = "time.js"></script>
-  <script src = "getPoem.js"></script>
-  
+    <p id="searchMessage"></p>
+  </div>
+</body>
+<script src="time.js"></script>
+<script src="getPoem.js"></script>
+
 </html>
