@@ -16,7 +16,7 @@ fetch('https://poetrydb.org/author').then(r => r.text()).then(result => {
   for (var i = 0; i < authorList.length; i++) {
     var opt = authorList[i];
     console.log(opt);
-    options += "<option>" + opt + "</option>";
+    options += "<option value = '" + opt + " '>" + opt + "</option>";
   }
   authorSelect.innerHTML = options;
 },
@@ -36,6 +36,10 @@ function displayAuthors() {
     text.style.display = "none";
   }
 }
+
+
+//document.getElementById("checkLabel").innerHTML = authorSelect.value;
+console.log(authorSelect.value);
 
 
 

@@ -3,21 +3,33 @@
 
 <head>
   <style>
-    h1 {
+    button {
       font-family: 'Gill Sans MT', 'Gill Sans', 'Calibri', sans-serif;
     }
 
+    h1 {
+      font-family: 'Gill Sans MT', 'Gill Sans', 'Calibri', sans-serif;
+    }
   </style>
 </head>
 <h1>Options:</h1>
 
 <body>
+  <div>
+    <form>
+    <label for="myCheck" id="checkLabel">Display poems by author:</label>
+    <input type="checkbox" id="myCheck">
+
+    <select name="authorList" id="authorSpinner" style="display: none"></select>
+    <p>Display a new poem:</p>
+    <input type="radio" id="dailyPoem" name="poemDisplay" value="daily">
+    <label for="dailyPoem">each day</label><br>
+    <input type="radio" checked = "checked" id="tabPoem" name="poemDisplay" value="eachTab">
+    <label for="tabPoem">each new tab</label><br><br>
     <div>
-    <label for="myCheck">Display poems by author:</label> 
-<input type="checkbox" id="myCheck">
-
-<select name="authorList" id="authorSpinner" style = "display: none"></select>
-
+      <button id="SaveChoice">Save</button>
+    </div>
+  </form>
   </div>
 </body>
 <script src="options.js"></script>
